@@ -3,7 +3,8 @@ header  {
 }
 
 header img {
-  width:12vw;
+  width: 12vw;
+  max-width:180px;
   height:12vh;
   margin-bottom: 0.5rem;
   border-radius: 20px;
