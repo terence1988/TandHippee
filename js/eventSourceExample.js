@@ -28,3 +28,15 @@ $('#calendar').fullCalendar({
   ]
 
 });
+
+
+
+// var calendar = new Calendar(calendarEl, {
+//   events: [
+//     { // this object will be "parsed" into an Event Object
+//       title: 'The Title', // a property!
+//       start: '2018-09-01', // a property!
+//       end: '2018-09-02' // a property! ** see important note below about 'end' **
+//     }
+//   ]
+// })
