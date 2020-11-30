@@ -4,6 +4,7 @@ header  {
 
 header img {
   width:12vw;
+  max-width:180px;
   height:12vh;
   margin-bottom: 0.5rem;
   border-radius: 20px;
@@ -22,4 +23,9 @@ header p {
 .navbar {
   margin-bottom: 0.5rem;
   font-size: 0.8em;
+}
+
+
+#task-details__label {
+  font-size: 3em;
 }
