@@ -1,0 +1,23 @@
+header  {
+  font-size: 2em;
+}
+
+header img {
+  width:12vw;
+  height:12vh;
+  margin-bottom: 0.5rem;
+}
+
+header #team-logo {
+  padding-top: 10px;
+  object-fit: fill;
+}
+
+header p {
+  font-size: 3em;
+  color: grey;
+}
+
+.navbar {
+  margin-bottom: 0.5rem;
+}
