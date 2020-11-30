@@ -6,6 +6,7 @@ header img {
   width:12vw;
   height:12vh;
   margin-bottom: 0.5rem;
+  border-radius: 20px;
 }
 
 header #team-logo {
@@ -20,4 +21,5 @@ header p {
 
 .navbar {
   margin-bottom: 0.5rem;
+  font-size: 0.8em;
 }
