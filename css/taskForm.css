@@ -25,7 +25,9 @@ header p {
   font-size: 0.8em;
 }
 
-
-#task-details__label {
-  font-size: 3em;
+.card-columns {
+  column-count: 2;
+}
+.card {
+  border-shadow: 5px 
 }
