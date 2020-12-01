@@ -24,10 +24,3 @@ header p {
   margin-bottom: 0.5rem;
   font-size: 0.8em;
 }
-
-.card-columns {
-  column-count: 2;
-}
-.card {
-  border-shadow: 5px 
-}

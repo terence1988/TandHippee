@@ -25,13 +25,11 @@ header p {
   font-size: 0.8em;
 }
 
-
 .jumbotron {
   columns: 3;
 }
-
 .card {
-  border-radius: 10px;
+  box-sizing: border-box;
+  border-radius: 15px;
 }
-
 
