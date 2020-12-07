@@ -6,23 +6,22 @@ let value = JSON.parse(window.localStorage.getItem(count)); //count / key to get
 document.getElementById("readEventButton").onclick = () => {
   console.log (value);
   }
-
+;
 
 function allStorage() {
-
   var values = [],
       keys = Object.keys(localStorage),
-      i = keys.length;
-
+      i = keys.length;  
   while ( i-- ) {
-      values.push( localStorage.getItem(keys[i]) );
+      values = localStorage.getItem(keys[i]);
   }
-
-  return values;
+      return values;
 }
 
-let eventss = allStorage();
-console.log(eventss)
+let eventss =JSON.parse(allStorage());
+
+// strings in setitem can't recover to key ?????? How to construct obj by using just strings?
+
   // events: [
     //   {
     //     title: 'All Day Event',
