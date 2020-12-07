@@ -1,8 +1,8 @@
-let index = 1 ;
+let index = Object.keys(localStorage).length;
 //key in local storage
 let conference = {
 groupId:'',
-title : Date(),
+title : '',
 start : Date(),
 end : '',
 taskName : 'WhatEver',
@@ -11,7 +11,7 @@ dueDate : '',
 taskDetails : '',
 taskStatus : ''
 }
-//Data format in local storage
+//Data format in local storage, some props is for full calendar
 
  
 
