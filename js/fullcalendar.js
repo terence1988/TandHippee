@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		initialView: "dayGridMonth",
 	});
 
-	// Convert all data from local St
+	// Convert all data from local Store
 	function allStorage() {
 		var values = [],
 			keys = Object.keys(localStorage),
