@@ -2,10 +2,9 @@ let index = Object.keys(localStorage).length;
 //key in local storage
 let conference = {
 groupId:'',
-title : '',
+title : 'WhatEver',
 start : Date(),
 end : '',
-taskName : 'WhatEver',
 assigneeName : 'Yes',
 dueDate : '',
 taskDetails : '',
