@@ -1,5 +1,3 @@
-
-
 var elements= [];
 //storage the data in window
 window.onload = function(){
