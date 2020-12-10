@@ -28,7 +28,7 @@
 				<div id="team-logo" class="col-2 navbar-light">
 					<img src="./assets/LogoTandHippee.png" />
 				</div>
-				<p class="text-center col-6">Calendar View</p>
+				<p class="text-right col-6">Calendar View</p>
 				<nav
 					class="navbar navbar-expand-lg navbar-light col-4 justify-content-end"
 				>
@@ -46,53 +46,53 @@
 		<!--header-->
 		<!--form area-->
 		<section class="mt-20">
-			<form class="form-area container">
+			<form class="form-area container" id="newTaskForm">
 				<!-- taskName -->
 				<div class="form-group">
-					<label for="inputAssign" class="col-form-label text-danger"
-						>Task Name:</label
+					<label for="inputTask" class="col-form-label text-danger"
+						>Task Name:<span id="alertMessageName" class="text-danger"></span></label
 					>
 					<input
 						type="text"
 						class="form-control"
-						id="inputAssign"
+						id="inputTask"
 						placeholder="I'd like to do..."
 					/>
 				</div>
 				<!--end taskName-->
-				<!-- formPart1 -->
+				<!-- formLine1 -->
 				<div class="row">
 					<div class="form-group col-6">
-						<label for="inputAssign" class="col-form-label text-danger"
-							>Assigned name:</label
+						<label for="inputAssignee" class="col-form-label text-danger"
+							>Assigned name:<span id="alertMessageAssign" class="text-danger"></span></label
 						>
 						<input
 							type="text"
 							class="form-control"
-							id="inputAssign"
+							id="inputAssignee"
 							placeholder="Task will be assigned to..."
 						/>
 					</div>
 					<div class="form-group col-6">
 						<label for="inputDate" class="col-form-label text-danger"
-							>Due Date:</label
+							>Due Date:<span id="alertMessageDue" class="text-danger"></span></label
 						>
 						<input type="date" class="form-control" id="inputDate" />
 					</div>
 				</div>
-				<!-- end formPart1 -->
+        <!-- end formLine1 -->
 				<!-- taskDescription -->
 				<div class="form-group text-danger">
-					<label id="task-details__label" class="text-center" for="taskDetails"
-						>Task Details:</label
+					<label id="task-details__label" class="text-center" for="inputDescription"
+						>Task Details:<span id="alertMessageDesc" class="text-danger"></span></label
 					>
-					<textarea class="form-control" id="taskDetails" rows="10"></textarea>
+					<textarea class="form-control" id="inputDescription" rows="10"></textarea>
 				</div>
 				<!-- end taskDescription -->
 				<!-- taskStatus -->
 				<div class="form-group">
 					<label for="task-status text-primary">Task Status:</label>
-					<select name="pets" id="task-status">
+					<select name="" id="task-status">
 						<option value="">--Please choose an option--</option>
 						<option value="unassigned">Unassigned</option>
 						<option value="inProgress">In Progress</option>
@@ -103,21 +103,21 @@
 				<!-- button-->
 				<div class="float-right mt-5">
 					<button
-						href="#"
+            type="submit"
 						class="btn btn-secondary btn-lg"
 						role="button"
 						aria-pressed="true"
 					>
 						Save
 					</button>
-					<button
-						href="#"
+          <a 
+            href="index.html"
 						class="btn btn-secondary btn-lg"
 						role="button"
 						aria-pressed="true"
 					>
 						Cancel
-					</button>
+        </a>
 				</div>
 				<!-- end button -->
 			</form>
@@ -134,5 +134,5 @@
 		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 		crossorigin="anonymous"
 	></script>
-	<script src="save.js"></script>
+	<script src="./js/validateFormInput.js"></script>
 </html>
