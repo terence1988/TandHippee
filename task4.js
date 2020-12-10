@@ -45,8 +45,8 @@ console.log(localStorage.getItem("taskForm"));
     display();
 
 function display(){
-    taskDescription.innerHTML = "Enter here";
-    taskAssigned.innerHTML = "Enter here";
+    taskDescription.innerHTML = "";
+    taskAssigned.innerHTML = "";
     for (let i=0;i<elements.length;i++){
         taskDescription.innerHTML += elements[i];
         taskAssigned.innerHTML += elements[i];
