@@ -70,27 +70,27 @@
 			<!-- task Description -->
 			<div class="form-group text-danger">
 				<label id="task-details__label" class="text-center" for="taskDetails">Task Description:</label>
-				<textarea class="addForm1" id="taskDetails" rows="10"></textarea>
+				<textarea class="form-control" id="taskDetails" rows="10"></textarea>
 			</div>
 			<!-- end task Description -->
 			<!-- formPart1 -->
 			<div class="row">
 				<div class="form-group col-6">
 					<label for="inputAssign" class="col-form-label text-danger">Assigned name:</label>
-					<input type="text" class="addForm2"	id="inputAssign" placeholder="Your name" />
+					<input type="text" class="form-control"	id="inputAssign" placeholder="Your name" />
 				</div>
 				<!-- end form1 -->
 				<!-- form2 -->
 				<div class="form-group col-6">
 					<label for="inputDate" class="col-form-label text-danger">Due Date:</label>
-					<input type="date" class="addForm3"	id="inputDate"  />
+					<input type="date" class="form-control"	id="inputDate"  />
 				</div>
 			</div>
 			<!-- end form2 -->
 			<!-- form3 -->
 			<div class="form-group">
 				<label for="task-status text-primary">Task Status:</label>
-				<select name="pets"  class="addForm4" id="task-status">
+				<select name="pets"  class="form-control" id="taskStatus">
 					<option value="">--Please choose an option--</option>
 					<option value="unassigned">Unassigned</option>
 					<option value="inProgress">In Progress</option>
@@ -100,8 +100,10 @@
 			</div>
 			<!-- button-->
 			<div class="float-right mt-5">
-				<a				   
+				<a	
+
 					class="addBtn" onclick="addElement()"
+					type="submit"
 					class="btn btn-secondary btn-lg active"
 					role="button"
 					aria-pressed="true"
