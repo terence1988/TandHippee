@@ -10,28 +10,26 @@ newTaskForm.addEventListener('submit', (event) => {
 	const newTaskNameInput = document.querySelector('#inputTask');
 	const newTaskDescription = document.querySelector('#inputDescription');
 	const newTaskAssignedTo = document.querySelector('#inputAssignee');
-	const newTaskDueDate = document.querySelector('#inputDate');
+  const newTaskDueDate = document.querySelector('#inputDate');
+  const newTaskStatus = document.querySelector('#taskStatus');
+  //errorMessages
   const errorMessageName = document.querySelector('#alertMessageName');
   const errorMessageDescription = document.querySelector('#alertMessageDesc');
   const errorMessageAssignedTo = document.querySelector('#alertMessageAssign');
-  const errorMessagedueDate = document.querySelector('#alertMessageDue');
+  const errorMessageDueDate = document.querySelector('#alertMessageDueDate');
+  const errorMessageTaskStatus = document.querySelector('#alertMessageTaskStatus');
 
 	/*
         Validation code here
     */
 
 	// Get the values of the inputs
-	const name = newTaskNameInput.value;
-	const description = newTaskDescription.value;
-	const assignedTo = newTaskAssignedTo.value;
-  const dueDate = newTaskDueDate.value;
-
-
-  //var d = Math.floor(Date.parse(dueDate)/1000);  //dueDate in seconds from 1970
-  //var d2 = new Math.floor(Date().getTime()/1000); //currentDate in seconds from 1970
-  //alert(d); //this is in milliseconds
-  //alert(d2);  
-
+	const name = document.querySelector('#inputTask').value;
+	const description = document.querySelector('#inputDescription').value;
+	const assignedTo = document.querySelector('#inputAssignee').value;
+  const dueDate = document.querySelector('#inputDate').value;
+  const taskStatus = document.querySelector('#taskStatus').value;
+//Validate form
 	if (!validFormFieldInput(name)) {
 		errorMessageName.innerHTML = '\xa0\xa0What would you like to do?';
 		errorMessageName.style.display = 'inline';
@@ -51,18 +49,42 @@ newTaskForm.addEventListener('submit', (event) => {
 		errorMessageAssignedTo.style.display = 'none';
   }
 	if (Math.floor(Date.parse(dueDate)/1000) < Math.floor(new Date().getTime()/1000)) {
-		errorMessagedueDate.innerHTML = '\xa0\xa0How can you get it done in the past?';
-		errorMessagedueDate.style.display = 'inline';
+		errorMessageDueDate.innerHTML = '\xa0\xa0How can you get it done in the past?';
+		errorMessageDueDate.style.display = 'inline';
   } else if (!dueDate) {
-    errorMessagedueDate.innerHTML = '\xa0\xa0Please select a date';
-		errorMessagedueDate.style.display = 'inline';
+    errorMessageDueDate.innerHTML = '\xa0\xa0Please select a date';
+		errorMessageDueDate.style.display = 'inline';
   }
   else 
   {
-		errorMessagedueDate.style.display = 'none';
-	}
+		errorMessageDueDate.style.display = 'none';
+  }
+//Validate form
+// storeData on submit
+  if (name && assignedTo && description && dueDate && errorMessageTaskStatus) {
+  let currentDate = new Date();
+  const startDate = `${currentDate.getFullYear()}-${currentDate.getDate()}-${currentDate.getMonth()}`
+  storeFormInLocalStorage(name,assignedTo,description,startDate,dueDate);
+  }
 });
 
 function validFormFieldInput(data) {
 	return data !== null && data !== '';
+}
+
+function storeFormInLocalStorage (name,description,assignedTo,startDate,dueDate) {
+  let index = Object.keys(localStorage).length;
+  //key in local storage
+  let conference = {
+  groupId:'',
+  title : `${name}`,
+  start : `${startDate}`,
+  end : `${dueDate}`,
+  assigneeName : `${assignedTo}`,
+  dueDate : `${dueDate}`,
+  taskDetails :`${description}`,
+  taskStatus : ''
+  };
+  //Data format in local storage, some props is for full calendar
+  window.localStorage.setItem(`${index}`, JSON.stringify(conference));
 }
