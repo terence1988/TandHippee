@@ -1,26 +1,31 @@
-header  {
-  font-size: 2em;
+header {
+	font-size: 2em;
 }
 
 header img {
-  width:12vw;
-  max-width:180px;
-  height:12vh;
-  margin-bottom: 0.5rem;
-  border-radius: 20px;
+	width: 12vw;
+	max-width: 180px;
+	height: 12vh;
+	margin-bottom: 0.5rem;
+	border-radius: 20px;
 }
 
 header #team-logo {
-  padding-top: 10px;
-  object-fit: fill;
+	padding-top: 10px;
+	object-fit: fill;
 }
 
 header p {
-  font-size: 3em;
-  color: grey;
+	font-size: 3em;
+	color: grey;
 }
 
 .navbar {
-  margin-bottom: 0.5rem;
-  font-size: 0.8em;
+	margin-bottom: 0.5rem;
+	font-size: 0.8em;
+}
+
+#cancel,
+#save {
+	margin: 8px 4px;
 }

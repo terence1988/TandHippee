@@ -50,8 +50,8 @@
 				<!-- taskName -->
 				<div class="form-group">
 					<label for="inputTask" class="col-form-label text-danger"
-						>Task Name:<span id="alertMessageName" class="text-danger"></span></label
-					>
+						>Task Name:<span id="alertMessageName" class="text-danger"></span
+					></label>
 					<input
 						type="text"
 						class="form-control"
@@ -64,8 +64,11 @@
 				<div class="row">
 					<div class="form-group col-6">
 						<label for="inputAssignee" class="col-form-label text-danger"
-							>Assigned name:<span id="alertMessageAssign" class="text-danger"></span></label
-						>
+							>Assigned name:<span
+								id="alertMessageAssign"
+								class="text-danger"
+							></span
+						></label>
 						<input
 							type="text"
 							class="form-control"
@@ -75,54 +78,85 @@
 					</div>
 					<div class="form-group col-6">
 						<label for="inputDate" class="col-form-label text-danger"
-							>Due Date:<span id="alertMessageDueDate" class="text-danger"></span></label
-						>
+							>Due Date:<span
+								id="alertMessageDueDate"
+								class="text-danger"
+							></span
+						></label>
 						<input type="date" class="form-control" id="inputDate" />
 					</div>
 				</div>
-        <!-- end formLine1 -->
+				<!-- end formLine1 -->
 				<!-- taskDescription -->
 				<div class="form-group text-danger">
-					<label id="task-details__label" class="text-center" for="inputDescription"
-						>Task Details:<span id="alertMessageDesc" class="text-danger"></span></label
-					>
-					<textarea class="form-control" id="inputDescription" rows="10"></textarea>
+					<label
+						id="task-details__label"
+						class="text-center"
+						for="inputDescription"
+						>Task Details:<span id="alertMessageDesc" class="text-danger"></span
+					></label>
+					<textarea
+						class="form-control"
+						id="inputDescription"
+						rows="10"
+					></textarea>
 				</div>
 				<!-- end taskDescription -->
 				<!-- taskStatus -->
 				<div class="form-group">
 					<label for="taskStatus" class="text-danger">Task Status:</label>
 					<select name="" id="taskStatus">
-						<option value="" selected disabled hidden id="alertMessageTaskStatus">--Please choose an option--</option>
+						<option
+							value=""
+							selected
+							disabled
+							hidden
+							id="alertMessageTaskStatus"
+						>
+							--Please choose an option--
+						</option>
 						<option value="unassigned">To Do</option>
 						<option value="inProgress">In Progress</option>
 						<option value="completed">Completed</option>
-          </select><div><span id="alertMessageTaskStatus" class="text-danger"></span></div>
-				</div>
-				<!-- end taskStatus -->
-				<!-- button-->
-				<div class="float-right mt-5">
+					</select>
+					<div class="d-flex justify-content-end">
 					<button
-            type="submit"
-						class="btn btn-secondary btn-lg"
-						role="button"
-            aria-pressed="true"
-            id="save"
-					>
-						Save
-					</button>
-          <a 
-            href="index.html"
+						type="submit"
 						class="btn btn-secondary btn-lg"
 						role="button"
 						aria-pressed="true"
+						id="save"
+					>
+						Save
+					</button>
+					<a
+						href="index.html"
+						class="btn btn-secondary btn-lg"
+						role="button"
+            aria-pressed="true"
+            id="cancel"
 					>
 						Cancel
-        </a>
+					</a>
 				</div>
-				<!-- end button -->
+				<!-- end taskStatus -->
 			</form>
 		</section>
+		<div class="jumbotron mt-5">
+			<div id="list-items">
+				<div class="card mb-3" style="width: 18rem">
+					<div class="card-body">
+						<h5 class="card-title">Clean My Room</h5>
+						<span class="badge badge-primary">IN PROGRESS</span>
+						<p class="card-text">Clean my bedroom at 10:10 a.m</p>
+						<p class="card-text">Terence Ma</p>
+						<p class="card-text">Due Date: Aug 20 - 2020</p>
+						<a href="#" class="btn btn-primary">Edit</a>
+						<a href="#" class="btn btn-primary">Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 
 	<script
@@ -135,5 +169,6 @@
 		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 		crossorigin="anonymous"
 	></script>
-	<script src="./js/validateFormInput.js"></script>
+  <script src="./js/validateFormInput.js"></script>
+  <script src="./js/displayNewTask.js"></script>
 </html>
