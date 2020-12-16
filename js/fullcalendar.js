@@ -1,10 +1,10 @@
-document.addEventListener("DOMContentLoaded", function () {
-	var calendarEl = document.getElementById("calendar");
+document.addEventListener('DOMContentLoaded', function () {
+	var calendarEl = document.getElementById('calendar');
 	var calendar = new FullCalendar.Calendar(calendarEl, {
-		initialView: "dayGridMonth",
+		initialView: 'dayGridMonth',
 	});
 
-	// Convert all data from local Store  can be refactored for...in... 
+	// Convert all data from local Store  can be refactored for...in...
 	function allStorage() {
 		var values = [],
 			keys = Object.keys(localStorage),
@@ -16,14 +16,14 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	let allEvents = allStorage().filter(Boolean); //function collects and converts to object and filter the invalid element
-
+	console.log(allEvents);
 	var calendar = new FullCalendar.Calendar(calendarEl, {
-		initialView: "dayGridMonth",
-		initialDate: "2020-12-07",
+		initialView: 'dayGridMonth',
+		initialDate: '2020-12-07',
 		headerToolbar: {
-			left: "prev,next today",
-			center: "title",
-			right: "dayGridMonth,timeGridWeek,timeGridDay",
+			left: 'prev,next today',
+			center: 'title',
+			right: 'dayGridMonth,timeGridWeek,timeGridDay',
 		},
 		events: allEvents,
 	});

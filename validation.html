@@ -46,13 +46,16 @@
 		<!--header-->
 		<!--form area-->
 		<section class="mt-20">
-			<form class="form-area container" id="newTaskForm" 
-			action="exerciseMessage.html">
+			<form
+				class="form-area container"
+				id="newTaskForm"
+				action="exerciseMessage.html"
+			>
 				<!-- taskName -->
 				<div class="form-group">
 					<label for="inputTask" class="col-form-label text-danger"
-						>Task Name:<span id="alertMessageName" class="text-danger"></span></label
-					>
+						>Task Name:<span id="alertMessageName" class="text-danger"></span
+					></label>
 					<input
 						type="text"
 						class="form-control"
@@ -65,8 +68,11 @@
 				<div class="row">
 					<div class="form-group col-6">
 						<label for="inputAssignee" class="col-form-label text-danger"
-							>Assigned name:<span id="alertMessageAssign" class="text-danger"></span></label
-						>
+							>Assigned name:<span
+								id="alertMessageAssign"
+								class="text-danger"
+							></span
+						></label>
 						<input
 							type="text"
 							class="form-control"
@@ -76,18 +82,26 @@
 					</div>
 					<div class="form-group col-6">
 						<label for="inputDate" class="col-form-label text-danger"
-							>Due Date:<span id="alertMessageDue" class="text-danger"></span></label
-						>
+							>Due Date:<span id="alertMessageDue" class="text-danger"></span
+						></label>
 						<input type="date" class="form-control" id="inputDate" />
 					</div>
 				</div>
-        <!-- end formLine1 -->
+				<!-- end formLine1 -->
 				<!-- taskDescription -->
 				<div class="form-group text-danger">
-					<label id="task-details__label" class="text-center" for="inputDescription"
-						>Task Details:<span id="alertMessageDesc" class="text-danger"></span></label
-					>
-					<textarea class="form-control" id="inputDescription" placeholder="Task description:" rows="10"></textarea>
+					<label
+						id="task-details__label"
+						class="text-center"
+						for="inputDescription"
+						>Task Details:<span id="alertMessageDesc" class="text-danger"></span
+					></label>
+					<textarea
+						class="form-control"
+						id="inputDescription"
+						placeholder="Task description:"
+						rows="10"
+					></textarea>
 				</div>
 				<!-- end taskDescription -->
 				<!-- taskStatus -->
@@ -104,27 +118,38 @@
 				<!-- button-->
 				<div class="float-right mt-5">
 					<button
-			type="submit" 
+						type="submit"
 						class="saveButton"
 						class="btn btn-secondary btn-lg"
 						role="button"
 						aria-pressed="true"
-					   value="submit"
+						value="submit"
 					>
 						Save
 					</button>
-          <a 
-            href="index.html"
+					<a
+						href="index.html"
 						class="btn btn-secondary btn-lg"
 						role="button"
 						aria-pressed="true"
 					>
 						Cancel
-        </a>
+					</a>
 				</div>
 				<!-- end button -->
 			</form>
 		</section>
+		<!-- <li class="card mb-3" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">Task 5</h5>
+        <span class="badge badge-primary">IN PROGRESS</span>
+        <p class="card-text">task 5 description</p>
+        <p class="card-text">Santiago Carrillo</p>
+        <p class="card-text">Due Date: Oct 15 - 2020</p>
+        <a href="#" class="btn btn-primary">Edit</a>
+        <a href="#" class="btn btn-primary">Delete</a>
+      </div>
+    </li> -->
 	</body>
 
 	<script

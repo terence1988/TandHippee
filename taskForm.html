@@ -46,11 +46,11 @@
 		<!--header-->
 		<!--form area-->
 		<section class="mt-20">
-			<form class="form-area container" id="newTaskForm">
+			<form class="form-area container" id="taskForm">
 				<!-- taskName -->
 				<div class="form-group">
 					<label for="inputTask" class="col-form-label text-danger"
-						>Task Name:<span id="alertMessageName" class="text-danger"></span
+						>Task Name:<span id="alertMessagetitle" class="text-danger"></span
 					></label>
 					<input
 						type="text"
@@ -107,7 +107,7 @@
 					<label for="taskStatus" class="text-danger">Task Status:</label>
 					<select name="" id="taskStatus">
 						<option
-							value=""
+              value=""
 							selected
 							disabled
 							hidden
@@ -115,9 +115,9 @@
 						>
 							--Please choose an option--
 						</option>
-						<option value="unassigned">To Do</option>
-						<option value="inProgress">In Progress</option>
-						<option value="completed">Completed</option>
+						<option value="To do">To Do</option>
+						<option value="In Progress">In Progress</option>
+						<option value="Completed">Completed</option>
 					</select>
 					<div class="d-flex justify-content-end">
 					<button
@@ -143,19 +143,8 @@
 			</form>
 		</section>
 		<div class="jumbotron mt-5">
-			<div id="list-items">
-				<div class="card mb-3" style="width: 18rem">
-					<div class="card-body">
-						<h5 class="card-title">Clean My Room</h5>
-						<span class="badge badge-primary">IN PROGRESS</span>
-						<p class="card-text">Clean my bedroom at 10:10 a.m</p>
-						<p class="card-text">Terence Ma</p>
-						<p class="card-text">Due Date: Aug 20 - 2020</p>
-						<a href="#" class="btn btn-primary">Edit</a>
-						<a href="#" class="btn btn-primary">Delete</a>
-					</div>
-				</div>
-			</div>
+      <ul class="list-group" id="card-list">
+      </ul>
 		</div>
 	</body>
 
@@ -168,7 +157,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 		crossorigin="anonymous"
-	></script>
+  ></script>
+  <script src="./js/addNPend.js"></script>
   <script src="./js/validateFormInput.js"></script>
-  <script src="./js/displayNewTask.js"></script>
 </html>
