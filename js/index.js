@@ -20,25 +20,7 @@ newTaskForm.addEventListener('submit', (event) => {
   const errorMessageAssignedTo = document.querySelector('#alertMessageAssign');
   const errorMessagedueDate = document.querySelector('#alertMessageDue');
 
-/*
-	//	Validation code here
-	function validate(){
-	var inputData = document.forms["newTaskForm"].value
-	if (inputData == "")
-	if (inputData =="" || newTaskNameInput.value == ""|| newTaskDescription.value==""||newTaskAssignedTo.value == "")	
-	{
-	alert("Enter a value");
-		return false;  
-	} 
-	else
-	{
-		return true;
-       
-	}
-}
-validate();
-    // end validation 
-*/
+
 	// Get the values of the inputs
 	const name = newTaskNameInput.value;
 	const description = newTaskDescription.value;
@@ -70,7 +52,7 @@ validate();
 		errorMessageAssignedTo.style.display = 'none';
   }
 	if (Math.floor(Date.parse(dueDate)/1000) < Math.floor(new Date().getTime()/1000)) {
-		errorMessagedueDate.innerHTML = '\xa0\xa0How can you get it done in the past?';
+		errorMessagedueDate.innerHTML = '\xa0\xa0';
 		errorMessagedueDate.style.display = 'inline';
   } else if (!dueDate) {
     errorMessagedueDate.innerHTML = '\xa0\xa0Please select a date';
@@ -80,26 +62,14 @@ validate();
   {
 		errorMessagedueDate.style.display = 'none';
 	}
-});
 
+	taskManager.addTask(name,assignedTo,description,dueDate)
+
+});
 function validFormFieldInput(data) {
 	return data !== null && data !== '';
 	
-}
-//task1 input
-let task1 = new TaskManager(1)
-task1.addTask.name = name;
-task1.addTask.description = description;
-task1.assignedTo = assignedTo;
-task1.dueDate = dueDate;
-task1.staTus = "TODO";
-console.log(task1);
+};
 
-//task2 input
-let task2 = new TaskManager(currentId=2);
-task2.name= 'peter';
-task2.description = "task2";
-task2.assignedTo = 'name2';
-task2.dueDate = 'today';
-task2.staTus = 'TODO';
-console.log(task2.name, task2.description, task2.assignedTo, task2.dueDate, task2.staTus);
+
+

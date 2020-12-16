@@ -6,7 +6,7 @@ class TaskManager{
     }
 
 
-    addTask(name,description,assignedTo,dueDate,staTus)
+    addTask(name,description,assignedTo,dueDate)
 {
 
     let newTask= {
@@ -15,21 +15,21 @@ class TaskManager{
         description: description,
         assignedTo : assignedTo,
         dueDate : dueDate,
-        staTus : 'TODO',
+        staTus : "TODO",
     }
-    console.Log(this.tasks.push(newTask));
+    console.log(this.tasks.push(newTask));
+    //display taskListin table form
+    const list = document.querySelector('#taskList');
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${newTask.name}</td>
+                    <td>${newTask.description}</td>
+                    <td>${newTask.assignedTo}</td>
+                    <td>${newTask.dueDate}</td>
+                    <td>${newTask.staTus}</td>
+                    <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+                  `; 
+    list.appendChild(row);
+
 }
-}
-
-let task1 = new TaskManager(currentId=1);
-task1.name= 'john';
-task1.description = 'task';
-task1.assignedTo = 'name1';
-task1.dueDate = 'today';
-task1.staTus = 'TODO';
-console.log(task1.name, task1.description, task1.assignedTo, task1.dueDate, task1.staTus);
-
-//console.log(task1.addTask(task1.name,task1.description,task1.assignedme2,task1.dueDate,task1.staTus));
-//console.log(task1.addTask);
-
+};
 
