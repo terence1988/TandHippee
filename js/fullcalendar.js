@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		return values;
 	}
-
 	let allEvents = allStorage().filter(Boolean); //function collects and converts to object and filter the invalid element
-	console.log(allEvents);
+
+	//render calendar
 	var calendar = new FullCalendar.Calendar(calendarEl, {
 		initialView: 'dayGridMonth',
 		initialDate: '2020-12-07',

@@ -1,9 +1,12 @@
-const eventManager = new EventManager(0);
+const eventManager = new EventManager(0); //Created a class to use -> redux
 // Select the New Task Form
+console.log(eventManager);
 const taskForm = document.querySelector('#taskForm');
+var today = new Date().toISOString().split('T')[0];
+document.getElementById('inputDate').setAttribute('min', today);
+
 // Add an 'onsubmit' event listener
 taskForm.addEventListener('submit', (event) => {
-	console.log('GetEvent');
 	// Prevent default action
 	event.preventDefault();
 
@@ -19,19 +22,19 @@ taskForm.addEventListener('submit', (event) => {
 	/*
         Validation code here
     */
+	//Locate DOM elements
+	let titleE = document.querySelector('#inputTask');
+	let descriptionE = document.querySelector('#inputDescription');
+	let assignedToE = document.querySelector('#inputAssignee');
+	let dueDateE = document.querySelector('#inputDate');
+	let taskStatusE = document.querySelector('#taskStatus');
 
 	// Get the values of the inputs
-	const title = document.querySelector('#inputTask').value;
-	const description = document.querySelector('#inputDescription').value;
-	const assignedTo = document.querySelector('#inputAssignee').value;
-	const dueDate = document.querySelector('#inputDate').value;
-	const taskStatus = document.querySelector('#taskStatus').value;
-
-	console.log(title);
-	console.log(description);
-	console.log(assignedTo);
-	console.log(dueDate);
-	console.log(taskStatus);
+	let title = document.querySelector('#inputTask').value;
+	let description = document.querySelector('#inputDescription').value;
+	let assignedTo = document.querySelector('#inputAssignee').value;
+	let dueDate = document.querySelector('#inputDate').value;
+	let taskStatus = document.querySelector('#taskStatus').value;
 
 	//Validate form
 	if (!validFormFieldInput(title)) {
@@ -67,34 +70,16 @@ taskForm.addEventListener('submit', (event) => {
 	}
 	//Validate form
 	// storeData on submit
-	if (title && assignedTo && description && dueDate) {
+	if (title && assignedTo && description && dueDate && taskStatus) {
 		eventManager.addEvent(title, assignedTo, description, dueDate, taskStatus);
 	}
+	titleE.value = '';
+	assignedToE.value = '';
+	descriptionE.value = '';
+	dueDateE.value = '';
+	taskStatusE.value = ''; //WTF
 });
 
-function validFormFieldInput(data) {
+const validFormFieldInput = (data) => {
 	return data !== null && data !== '';
-}
-
-// function storeFormInLocalStorage(
-// 	title,
-// 	description,
-// 	assignedTo,
-// 	startDate,
-// 	dueDate,
-// 	taskStatus
-// ) {
-// 	let index = Object.keys(localStorage).length;
-// 	//key in local storage
-// 	let conference = {
-// 		title: `${title}`,
-// 		start: `${startDate}`,
-// 		end: `${dueDate}`,
-// 		assignedTo: `${assignedTo}`,
-// 		dueDate: `${dueDate}`,
-// 		taskDetails: `${description}`,
-// 		taskStatus: `${taskStatus}`,
-// 	};
-// 	//Data format in local storage, some props is for full calendar
-// 	window.localStorage.setItem(`${index}`, JSON.stringify(conference));
-// }
+};

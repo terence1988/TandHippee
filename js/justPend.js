@@ -11,25 +11,11 @@ class EventManager {
 	}
 	/*Add new books */
 	// Create a method with an object to add a book
-	addEvent(title, assignedTo, description, endDate, taskStatus) {
-		let currentDate = new Date();
-		const startDate = `${currentDate.getFullYear()}-${
-			currentDate.getMonth() + 1
-		}-${currentDate.getDate()}`;
-		const newEvent = {
-			title: title,
-			start: startDate,
-			end: endDate,
-			assignedTo: assignedTo,
-			dueDate: endDate,
-			taskDetails: description,
-			taskStatus: taskStatus,
-			currentId: this.currentId,
-		};
+	
 		// push the new book into the array
 
 		//leave a copy in local storage
-		window.localStorage.setItem(`${this.currentId}`, JSON.stringify(newEvent));
+    addBook() {
 		this.events.push(
 			JSON.parse(window.localStorage.getItem(`${this.currentId}`))
 		);
@@ -55,7 +41,5 @@ class EventManager {
 `;
 		// Append the new HTML card to the empty div
 		card.appendChild(list);
-	}
 }
 
-//
