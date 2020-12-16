@@ -73,7 +73,7 @@ taskForm.addEventListener('submit', (event) => {
 	if (title && assignedTo && description && dueDate && taskStatus) {
 		eventManager.addEvent(title, assignedTo, description, dueDate, taskStatus);
 	}
-	titleE.value = '';
+	title = '';
 	assignedToE.value = '';
 	descriptionE.value = '';
 	dueDateE.value = '';
