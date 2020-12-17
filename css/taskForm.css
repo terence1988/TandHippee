@@ -29,3 +29,7 @@ header p {
 #save {
 	margin: 8px 4px;
 }
+
+.bg-light {
+	background-color: #c8e6dc !important;
+}

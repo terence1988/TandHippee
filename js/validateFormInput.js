@@ -1,6 +1,5 @@
-const eventManager = new EventManager(0); //Created a class to use -> redux
+const eventsManager = new taskManager(); //Created a obj for EventManager class
 // Select the New Task Form
-console.log(eventManager);
 const taskForm = document.querySelector('#taskForm');
 var today = new Date().toISOString().split('T')[0];
 document.getElementById('inputDate').setAttribute('min', today);
@@ -15,21 +14,8 @@ taskForm.addEventListener('submit', (event) => {
 	const errorMessageDescription = document.querySelector('#alertMessageDesc');
 	const errorMessageAssignedTo = document.querySelector('#alertMessageAssign');
 	const errorMessageDueDate = document.querySelector('#alertMessageDueDate');
-	const errorMessageTaskStatus = document.querySelector(
-		'#alertMessageTaskStatus'
-	);
 
-	/*
-        Validation code here
-    */
-	//Locate DOM elements
-	let titleE = document.querySelector('#inputTask');
-	let descriptionE = document.querySelector('#inputDescription');
-	let assignedToE = document.querySelector('#inputAssignee');
-	let dueDateE = document.querySelector('#inputDate');
-	let taskStatusE = document.querySelector('#taskStatus');
-
-	// Get the values of the inputs
+	//Get value
 	let title = document.querySelector('#inputTask').value;
 	let description = document.querySelector('#inputDescription').value;
 	let assignedTo = document.querySelector('#inputAssignee').value;
@@ -71,13 +57,10 @@ taskForm.addEventListener('submit', (event) => {
 	//Validate form
 	// storeData on submit
 	if (title && assignedTo && description && dueDate && taskStatus) {
-		eventManager.addEvent(title, assignedTo, description, dueDate, taskStatus);
+		eventsManager.addEvent(title, assignedTo, description, dueDate, taskStatus);
+		event.target.reset();
 	}
-	title = '';
-	assignedToE.value = '';
-	descriptionE.value = '';
-	dueDateE.value = '';
-	taskStatusE.value = ''; //WTF
+	eventsManager.render();
 });
 
 const validFormFieldInput = (data) => {

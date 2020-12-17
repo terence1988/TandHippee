@@ -32,3 +32,11 @@ header p {
 .list-group {
 	list-style-type: none;
 }
+
+.bg-light {
+	background-color: #c8e6dc !important;
+}
+
+#card-list {
+	display: flex;
+}
