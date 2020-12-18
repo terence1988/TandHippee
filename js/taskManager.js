@@ -47,7 +47,7 @@ class taskManager {
 		}
 		this.events = allStorage().filter(Boolean); //function collects and converts to object and filter the invalid element
 	}
-
+	// Get an Id from localStorage
 	getCardById(id) {
 		return JSON.parse(window.localStorage.getItem(id));
 	}

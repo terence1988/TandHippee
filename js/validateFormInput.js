@@ -41,7 +41,7 @@ taskForm.addEventListener('submit', (event) => {
 	} else {
 		errorMessageAssignedTo.style.display = 'none';
 	}
-	if (Date.parse(dueDate) < new Date().getTime()) {
+	if (Date.parse(dueDate) < new Date().getTime() - 6400000) {
 		errorMessageDueDate.innerHTML =
 			'\xa0\xa0How can you get it done in the past?';
 		errorMessageDueDate.style.display = 'inline';
