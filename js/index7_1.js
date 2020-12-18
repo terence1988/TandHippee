@@ -51,10 +51,13 @@ newTaskForm.addEventListener('submit', (event) => {
 	} else {
 		errorMessageAssignedTo.style.display = 'none';
   }
-	if (Math.floor(Date.parse(dueDate)/1000) < Math.floor(new Date().getTime()/1000)) {
+  // input anydate
+/*	
+  if (Math.floor(Date.parse(dueDate)/1000) < Math.floor(new Date().getTime()/1000)) {
 		errorMessagedueDate.innerHTML = '\xa0\xa0';
 		errorMessagedueDate.style.display = 'inline';
-  } else if (!dueDate) {
+  }*/
+   if (!dueDate) {
     errorMessagedueDate.innerHTML = '\xa0\xa0Please select a date';
 		errorMessagedueDate.style.display = 'inline';
   }
