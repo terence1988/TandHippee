@@ -48,14 +48,16 @@ class taskManager {
 		this.events = allStorage().filter(Boolean); //function collects and converts to object and filter the invalid element
 	}
 
-	/*Display list of events*/
+	getCardById(id) {
+		return JSON.parse(window.localStorage.getItem(id));
+	}
 	/*Display list of events*/
 	renderEvents() {
 		const eventsHtmlList = [];
-		for (let i = 0; i < this.events.length; i++) {
+		for (let i = 0; i < Object.keys(window.localStorage).length; i++) {
 			const events = this.events[i];
 			const eventHtml = createTaskCard(
-				i,
+				this.currentId - 1,
 				events.title,
 				events.taskStatus,
 				events.taskDetails,
@@ -87,8 +89,8 @@ const createTaskCard = (
     <p class="card-text">${taskDetails}</p>
     <p class="card-text">${assignedTo}</p>
     <p class="card-text">${dueDate}</p>
-    <a href="#" class="btn btn-primary">Edit</a>
-    <a href="#" class="btn btn-primary">Delete</a>
+    <a href="#" class="btn btn-primary done-button">Done</a>
+    <a href="#" class="btn btn-primary delete-button">Delete</a>
   </div>
   </li>
 `;

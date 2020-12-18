@@ -1,7 +1,7 @@
 const eventsManager = new taskManager(); //Created a obj for EventManager class
 // Select the New Task Form
 const taskForm = document.querySelector('#taskForm');
-var today = new Date().toISOString().split('T')[0];
+let today = new Date().toISOString().split('T')[0];
 document.getElementById('inputDate').setAttribute('min', today);
 
 // Add an 'onsubmit' event listener
@@ -41,10 +41,7 @@ taskForm.addEventListener('submit', (event) => {
 	} else {
 		errorMessageAssignedTo.style.display = 'none';
 	}
-	if (
-		Math.floor(Date.parse(dueDate) / 1000) <
-		Math.floor(new Date().getTime() / 1000)
-	) {
+	if (Date.parse(dueDate) < new Date().getTime()) {
 		errorMessageDueDate.innerHTML =
 			'\xa0\xa0How can you get it done in the past?';
 		errorMessageDueDate.style.display = 'inline';
@@ -60,7 +57,6 @@ taskForm.addEventListener('submit', (event) => {
 		eventsManager.addEvent(title, assignedTo, description, dueDate, taskStatus);
 		event.target.reset();
 	}
-	eventsManager.render();
 });
 
 const validFormFieldInput = (data) => {
