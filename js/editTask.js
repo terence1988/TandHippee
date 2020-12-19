@@ -23,7 +23,6 @@ taskCard.addEventListener('click', (event) => {
 	if (event.target.classList.contains('delete-button')) {
 		// Get the parent Book
 		const parentCard = event.target.parentElement.parentElement;
-		console.log(parentCard);
 		// Get the cardId of the parent Book.
 		const cardId = parentCard.id[5];
 		// Get the book from the BookManager using the bookId

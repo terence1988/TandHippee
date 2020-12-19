@@ -55,6 +55,8 @@ taskForm.addEventListener('submit', (event) => {
 	// storeData on submit
 	if (title && assignedTo && description && dueDate && taskStatus) {
 		eventsManager.addEvent(title, assignedTo, description, dueDate, taskStatus);
+		//location.replace('https://terence1988.github.io/TandHippee/calendar.html'); web
+		window.location.href = './index.html';
 		event.target.reset();
 	}
 });

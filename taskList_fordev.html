@@ -20,6 +20,7 @@
 			href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css"
 		/>
 		<link rel="stylesheet" href="css/taskOverView.css" />
+		<link rel="stylesheet" href="css/taskOverView-fordev.css" />
 	</head>
 	<body>
 		<!--header-->
@@ -43,11 +44,17 @@
 				</nav>
 			</div>
 		</header>
-		<div class="jumbotron mt-5">
-			<ul class="list-group" id="card-list"></ul>
-		</div>
+		<section>
+			<button data-toggle="modal" href="taskForm.html" id="cloneCards">
+				Clone Cards
+			</button>
+		</section>
+		<section>
+			<ul class="jumbotron mt-5" id="card-list"></ul>
+		</section>
 		<script src="./js/taskManager.js"></script>
 		<script src="./js/render1Second.js"></script>
 		<script src="./js/editTask.js"></script>
+		<script src="./js/cloneCard.js"></script>
 	</body>
 </html>

@@ -1,0 +1,6 @@
+$colors: red, orange, yellow, green, blue, purple;
+@for $i from 1 through length($colors) {
+	section ul li:nth-child(#{length($colors)}n + #{$i}) {
+		background: nth($colors, $i);
+	}
+}

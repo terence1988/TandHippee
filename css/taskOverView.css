@@ -28,6 +28,7 @@ header p {
 .card {
 	box-sizing: border-box;
 	border-radius: 15px;
+	width: 18rem;
 }
 .list-group {
 	list-style-type: none;

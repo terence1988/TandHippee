@@ -51,13 +51,29 @@ class taskManager {
 	getCardById(id) {
 		return JSON.parse(window.localStorage.getItem(id));
 	}
+
+	///
+	cloneCardBySmallMissedId() {
+		let maxCards = Object.keys(window.localStorage)
+			.map((i) => Number(i))
+			.sort(function (a, b) {
+				return a - b;
+			});
+		let lastCardId = getCardID(maxCards);
+		let maxCardId = maxCards.pop();
+		const card = JSON.parse(window.localStorage.getItem(maxCardId));
+		card.currentId = lastCardId;
+		window.localStorage.setItem(`${lastCardId}`, JSON.stringify(card));
+	}
+	///
+
 	/*Display list of events*/
 	renderEvents() {
 		const eventsHtmlList = [];
 		for (let i = 0; i < Object.keys(window.localStorage).length; i++) {
 			const events = this.events[i];
 			const eventHtml = createTaskCard(
-				this.currentId - 1,
+				events.currentId,
 				events.title,
 				events.taskStatus,
 				events.taskDetails,
@@ -82,7 +98,7 @@ const createTaskCard = (
 	dueDate
 ) => {
 	return `
-  <li class="list-group-items card mb-3 mr-3" style="width: 18rem" id="card-${index}">
+  <li class="list-group-items card mb-3 mr-3" id="card-${index}">
   <div class="card-body">
     <h5 class="card-title">${title}</h5>
     <span class="badge badge-primary">${taskStatus}</span>
@@ -94,4 +110,20 @@ const createTaskCard = (
   </div>
   </li>
 `;
+};
+
+//Find the smallest missing int  //why need a break?
+const getCardID = (maxCards) => {
+	let id = '';
+	if (maxCards.length === 1) {
+		return (id = 2);
+	}
+	console.log(maxCards);
+	for (let j = 0; j < maxCards.length; j++) {
+		if (maxCards[j] !== j + 1) {
+			id = j + 1;
+			break;
+		} else id = maxCards.length + 1;
+	}
+	return id;
 };
