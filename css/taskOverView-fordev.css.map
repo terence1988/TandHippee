@@ -1,7 +1,8 @@
 {
   "version": 3,
   "sourceRoot": "",
-  "sources": ["..\scss\taskOverView-fordev.scss"
+  "sources": [
+    "../scss/_taskOverView-fordev.scss"
   ],
   "names": [],
   "mappings": "AAEC;EACC;;;AADD;EACC;;;AADD;EACC;;;AADD;EACC;;;AADD;EACC;;;AADD;EACC",
