@@ -118,7 +118,6 @@ const getCardID = (maxCards) => {
 	if (maxCards.length === 1) {
 		return (id = 2);
 	}
-	console.log(maxCards);
 	for (let j = 0; j < maxCards.length; j++) {
 		if (maxCards[j] !== j + 1) {
 			id = j + 1;

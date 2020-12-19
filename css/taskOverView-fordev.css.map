@@ -1,1 +1,9 @@
-{"version":3,"sourceRoot":"","sources":["taskOverView-fordev.scss"],"names":[],"mappings":"AAEC;EACC;;;AADD;EACC;;;AADD;EACC;;;AADD;EACC;;;AADD;EACC;;;AADD;EACC","file":"taskOverView-fordev.css"}
+{
+  "version": 3,
+  "sourceRoot": "",
+  "sources": ["..\scss\taskOverView-fordev.scss"
+  ],
+  "names": [],
+  "mappings": "AAEC;EACC;;;AADD;EACC;;;AADD;EACC;;;AADD;EACC;;;AADD;EACC;;;AADD;EACC",
+  "file": "taskOverView-fordev.css"
+}
