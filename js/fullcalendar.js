@@ -15,11 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
 		return values;
 	}
 	let allEvents = allStorage().filter(Boolean); //function collects and converts to object and filter the invalid element
-
+	let currentMonth = new Date().getMonth() + 1;
 	//render calendar
+	console.log(allEvents);
+
 	var calendar = new FullCalendar.Calendar(calendarEl, {
 		initialView: 'dayGridMonth',
-		initialDate: '2020-12-07',
+		initialDate: '2021-01-01',
 		headerToolbar: {
 			left: 'prev,next today',
 			center: 'title',

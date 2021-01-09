@@ -1,4 +1,4 @@
-const taskCard = document.querySelector('#card-list');
+const taskCard = document.getElementById('#card-list');
 // Add an 'onclick' event listener to the Tasks List
 taskCard.addEventListener('click', (event) => {
 	// Check if a "Mark As Read" button was clicked
@@ -25,10 +25,16 @@ taskCard.addEventListener('click', (event) => {
 		const parentCard = event.target.parentElement.parentElement;
 		// Get the cardId of the parent Book.
 		const cardId = parentCard.id[5];
-		// Get the book from the BookManager using the bookId
+		// Get the bookId from the BookManager using the bookId
 		window.localStorage.removeItem(`${cardId}`);
 		// Render the books
 		eventManager.pendEvents();
 		eventManager.renderEvents();
 	}
+});
+
+const clsBtn = document.getElementById('clsBtn');
+clsBtn.addEventListener('click', () => {
+	localStorage.clear();
+	eventManager.renderEvents();
 });

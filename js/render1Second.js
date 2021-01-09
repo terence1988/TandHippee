@@ -1,7 +1,9 @@
-let eventManager = new taskManager();
+let eventManager = new TaskManager();
 document.addEventListener('DOMContentLoaded', function () {
 	eventManager.pendEvents();
 	eventManager.renderEvents();
 });
-setInterval(eventManager.pendEvents(), 1000);
-setInterval(eventManager.renderEvents(), 1000);
+
+// setInterval(() => {
+// 	eventManager.checkStatus();
+// }, 1000); //This is just interesting

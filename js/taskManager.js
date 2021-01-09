@@ -1,11 +1,8 @@
-class taskManager {
-	// Create a constructor to initialize array
+class TaskManager {
+	//Create this Class to CRUD the whole webpage
 	constructor() {
 		// Set the currentId value to localStorage count
-		this.currentId = Object.keys(window.localStorage).length + 1; // sometimes it has previous count
-		setInterval(() => {
-			this.currentId = Object.keys(window.localStorage).length + 1;
-		}, 500);
+		this.currentId = 0; // sometimes it has previous count
 		// Initialize an empty array to save the events added
 		this.events = [];
 		// Set the currentId value to currentId
@@ -13,12 +10,28 @@ class taskManager {
 	}
 	/*Add new events */
 	// Create a method with an object to add an event
-	addEvent(title, assignedTo, description, endDate, taskStatus) {
-		let currentDate = new Date();
-		const startDate = `${currentDate.getFullYear()}-${
-			currentDate.getMonth() + 1
-		}-${currentDate.getDate()}`;
-		const newEvent = {
+	createTask(
+		title,
+		assignedTo,
+		taskStatus,
+		startDate = '',
+		endDate,
+		description
+	) {
+		//parse Dates
+		let nowDate = new Date();
+		let nowMonth = (nowDate.getMonth() + 1).toString().padStart(2, 0);
+		let nowDay = nowDate.getMonth().toString().padStart(2, 0);
+		const currentDate = `${nowDate.getFullYear()}-${nowMonth}-${nowDay}`;
+		startDate ? '' : (startDate = currentDate);
+		//reset all card Ids in local storage
+		let lastCardId = getCardID();
+
+		if (this.currentId > lastCardId) {
+			this.currentId = lastCardId;
+		}
+		//Construct the task
+		const newTask = {
 			title: title,
 			start: startDate,
 			end: endDate,
@@ -29,46 +42,21 @@ class taskManager {
 			currentId: this.currentId,
 		};
 		// push the new book into the array
-		window.localStorage.setItem(`${this.currentId}`, JSON.stringify(newEvent));
+		window.localStorage.setItem(`${this.currentId}`, JSON.stringify(newTask));
 		this.events.push(
 			JSON.parse(window.localStorage.getItem(`${this.currentId}`))
 		); //leave a copy in local storage
 	}
-	//Render triggered by the submit event
-	pendEvents() {
-		function allStorage() {
-			var values = [],
-				keys = Object.keys(localStorage),
-				i = keys.length;
-			while (i--) {
-				values[keys[i]] = JSON.parse(localStorage.getItem(keys[i]));
-			}
-			return values;
-		}
-		this.events = allStorage().filter(Boolean); //function collects and converts to object and filter the invalid element
-	}
-	// Get an Id from localStorage
-	getCardById(id) {
+	readTasks(id) {
 		return JSON.parse(window.localStorage.getItem(id));
 	}
-
-	///
-	cloneCardBySmallMissedId() {
-		let maxCards = Object.keys(window.localStorage)
-			.map((i) => Number(i))
-			.sort(function (a, b) {
-				return a - b;
-			});
-		let lastCardId = getCardID(maxCards);
-		let maxCardId = maxCards.pop();
-		const card = JSON.parse(window.localStorage.getItem(maxCardId));
-		card.currentId = lastCardId;
-		window.localStorage.setItem(`${lastCardId}`, JSON.stringify(card));
+	updateTasks(id) {
+		let item = readTasks(id);
 	}
-	///
 
+	deleteTasks(id) {}
 	/*Display list of events*/
-	renderEvents() {
+	renderTasks() {
 		const eventsHtmlList = [];
 		for (let i = 0; i < Object.keys(window.localStorage).length; i++) {
 			const events = this.events[i];
@@ -89,7 +77,7 @@ class taskManager {
 	}
 }
 
-const createTaskCard = (
+const cardTemplate = (
 	index,
 	title,
 	taskStatus,
@@ -101,28 +89,55 @@ const createTaskCard = (
   <li class="list-group-items card mb-3 mr-3" id="card-${index}">
   <div class="card-body">
     <h5 class="card-title">${title}</h5>
-    <span class="badge badge-primary">${taskStatus}</span>
+    <span class="badge ${
+			taskStatus === 'DONE' ? 'badge-secondary' : 'badge-primary'
+		}">${taskStatus}</span>
     <p class="card-text">${taskDetails}</p>
     <p class="card-text">${assignedTo}</p>
     <p class="card-text">${dueDate}</p>
-    <a href="#" class="btn btn-primary done-button">Done</a>
-    <a href="#" class="btn btn-primary delete-button">Delete</a>
+    <button href="#" class="btn btn-primary">Done</button>
+    <button href="#" class="btn btn-primary">Delete</button>
   </div>
   </li>
 `;
 };
 
-//Find the smallest missing int  //why need a break?
-const getCardID = (maxCards) => {
+//Find the smallest missing int  //key was string Number.parseInt
+//Just return the number comparing to the localStorage
+const getCardId = () => {
+	let maxCards = Object.keys(window.localStorage)
+		.map((i) => Number(i))
+		.sort(function (a, b) {
+			return a - b;
+		});
 	let id = '';
 	if (maxCards.length === 1) {
 		return (id = 2);
 	}
+	if (maxCards.length === 0) {
+		return (id = 1);
+	}
 	for (let j = 0; j < maxCards.length; j++) {
 		if (maxCards[j] !== j + 1) {
-			id = j + 1;
-			break;
+			return (id = j + 1);
 		} else id = maxCards.length + 1;
 	}
 	return id;
 };
+
+// Get an Id from localStorage
+
+///
+// cloneCardBySmallMissedId() {
+// 	let maxCards = Object.keys(window.localStorage)
+// 		.map((i) => Number(i))
+// 		.sort(function (a, b) {
+// 			return a - b;
+// 		});
+// 	let lastCardId = getCardID();
+// 	let maxCardId = maxCards.pop();
+// 	const card = JSON.parse(window.localStorage.getItem(maxCardId));
+// 	card.currentId = lastCardId;
+// 	window.localStorage.setItem(`${lastCardId}`, JSON.stringify(card));
+// }
+///

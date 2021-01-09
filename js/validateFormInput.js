@@ -1,8 +1,8 @@
-const eventsManager = new taskManager(); //Created a obj for EventManager class
+const eventsManager = new TaskManager(); //Created a obj for EventManager class
 // Select the New Task Form
 const taskForm = document.querySelector('#taskForm');
 let today = new Date().toISOString().split('T')[0];
-document.getElementById('inputDate').setAttribute('min', today);
+document.getElementById('endDate').setAttribute('min', today);
 
 // Add an 'onsubmit' event listener
 taskForm.addEventListener('submit', (event) => {
@@ -19,7 +19,8 @@ taskForm.addEventListener('submit', (event) => {
 	let title = document.querySelector('#inputTask').value;
 	let description = document.querySelector('#inputDescription').value;
 	let assignedTo = document.querySelector('#inputAssignee').value;
-	let dueDate = document.querySelector('#inputDate').value;
+	let startDate = document.querySelector('#startDate').value;
+	let dueDate = document.querySelector('#endDate').value;
 	let taskStatus = document.querySelector('#taskStatus').value;
 
 	//Validate form
@@ -54,7 +55,14 @@ taskForm.addEventListener('submit', (event) => {
 	//Validate form
 	// storeData on submit
 	if (title && assignedTo && description && dueDate && taskStatus) {
-		eventsManager.addEvent(title, assignedTo, description, dueDate, taskStatus);
+		eventsManager.addEvent(
+			title,
+			assignedTo,
+			taskStatus,
+			startDate,
+			dueDate,
+			description
+		);
 		//location.replace('https://terence1988.github.io/TandHippee/calendar.html'); web
 		window.location.href = './index.html';
 		event.target.reset();

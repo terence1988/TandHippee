@@ -13,3 +13,7 @@
 	display: flex;
 	flex-wrap: wrap;
 }
+
+.form-group select {
+	display: block;
+}

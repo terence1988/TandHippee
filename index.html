@@ -15,11 +15,7 @@
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css"
 		/>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css"
-		/>
-		<link rel="stylesheet" href="css/taskOverView.css" />
+		<link rel="stylesheet" href="css/index.css" />
 	</head>
 	<body>
 		<!--header-->
@@ -39,14 +35,25 @@
 						<li class="nav-item">
 							<a class="nav-link" href="./calendar.html">Calendar View</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="./taskForm.html">Task Form</a>
-						</li>
 					</ul>
 				</nav>
 			</div>
 		</header>
 		<main class="container-fluid">
+			<section>
+				<a
+					type="button"
+					class="btn btn-primary mb-3 done-button"
+					data-toggle="modal"
+					href="./taskForm.html"
+					data-target="#modal"
+				>
+					Add New Task
+				</a>
+				<button type="button" class="btn btn-primary mb-3 delete-button">
+					Clear The Tasks
+				</button>
+			</section>
 			<section>
 				<ul class="jumbotron" id="card-list"></ul>
 			</section>

@@ -1,4 +1,15 @@
 @import 'header.css';
+
+.card {
+	box-sizing: border-box;
+	border-radius: 15px;
+	width: 18rem;
+}
+
+.list-group {
+	list-style-type: none;
+}
+
 .bg-light {
 	background-color: #c8e6dc !important;
 }

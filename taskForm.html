@@ -29,9 +29,7 @@
 					<img src="./assets/LogoTandHippee.png" />
 				</div>
 				<p class="text-center col-8">Task Form</p>
-				<nav
-					class="navbar navbar-expand-lg navbar-light col-2 justify-content-end"
-				>
+				<!-- <nav class="navbar navbar-expand-lg navbar-light col-2 justify-content-end">
 					<ul class="navbar-nav">
 						<li class="nav-item">
 							<a class="nav-link" href="./index.html">List View</a>
@@ -39,38 +37,28 @@
 						<li class="nav-item">
 							<a class="nav-link" href="./calendar.html">Calendar View</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link  active" href="./taskForm.html">Task Form</a>
-						</li>
 					</ul>
-				</nav>
+				</nav> -->
 			</div>
 		</header>
 		<!--form area-->
 		<section class="mt-20">
 			<form class="form-area container" id="taskForm">
-				<!-- taskName -->
-				<div class="form-group">
-					<label for="inputTask" class="col-form-label text-danger"
-						>Task Name:<span id="alertMessagetitle" class="text-danger"></span
-					></label>
-					<input
-						type="text"
-						class="form-control"
-						id="inputTask"
-						placeholder="I'd like to do..."
-					/>
-				</div>
+        <!-- taskName -->
+        <div class="form-group">
+          <label for="inputTask" class="col-form-label text-danger">Task Name:<span id="alertMessagetitle" class="text-danger"></span></label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputTask"
+          placeholder="I'd like to do..."
+        />
+      </div>
 				<!--end taskName-->
 				<!-- formLine1 -->
 				<div class="row">
 					<div class="form-group col-6">
-						<label for="inputAssignee" class="col-form-label text-danger"
-							>Assigned name:<span
-								id="alertMessageAssign"
-								class="text-danger"
-							></span
-						></label>
+						<label for="inputAssignee" class="col-form-label text-danger">Assigned Name:<span	id="alertMessageAssign"	class="text-danger"></span></label>
 						<input
 							type="text"
 							class="form-control"
@@ -79,16 +67,40 @@
 						/>
 					</div>
 					<div class="form-group col-6">
-						<label for="inputDate" class="col-form-label text-danger"
-							>Due Date:<span
-								id="alertMessageDueDate"
-								class="text-danger"
-							></span
-						></label>
-						<input type="date" class="form-control" id="inputDate"/>
+            <label for="taskStatus" class="col-form-label text-danger">Task Status:</label>
+            <select name="" id="taskStatus" class="form-control">
+						<option
+              value=""
+							selected
+							disabled
+							hidden
+							id="alertMessageTaskStatus"
+						>
+							--Please choose an option--
+						</option>
+						<option value="To do">To Do</option>
+						<option value="In Progress">In Progress</option>
+						<option value="Completed">Completed</option>
+					</select>
 					</div>
 				</div>
-				<!-- end formLine1 -->
+        <!-- end formLine1 -->
+        <div class="row">
+          <div class="col-6">
+          <label for="startDate" class="col-form-label text-danger">
+            Start Date:<span id="alertMessagestartDate"	class="text-danger"
+							></span
+						></label>
+            <input type="date" class="form-control" id="startDate"/>
+          </div>
+          <div class="col-6">
+            <label for="inputDate" class="col-form-label text-danger">
+              Due Date:<span id="alertMessageDueDate"	class="text-danger"
+                ></span
+              ></label>
+              <input type="date" class="form-control" id="endDate"/>
+            </div>
+        </div>
 				<!-- taskDescription -->
 				<div class="form-group text-danger">
 					<label
@@ -106,21 +118,6 @@
 				<!-- end taskDescription -->
 				<!-- taskStatus -->
 				<div class="form-group">
-					<label for="taskStatus" class="text-danger">Task Status:</label>
-					<select name="" id="taskStatus">
-						<option
-              value=""
-							selected
-							disabled
-							hidden
-							id="alertMessageTaskStatus"
-						>
-							--Please choose an option--
-						</option>
-						<option value="To do">To Do</option>
-						<option value="In Progress">In Progress</option>
-						<option value="Completed">Completed</option>
-					</select>
 					<div class="d-flex justify-content-end">
 					<button
 						type="submit"
@@ -144,7 +141,6 @@
 				<!-- end taskStatus -->
 			</form>
 		</section>
-		</div>
 	</body>
 
 	<script
@@ -157,7 +153,6 @@
 		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 		crossorigin="anonymous"
   ></script>
-  <script src="./js/render1Second.js"></script>
   <script src="./js/taskManager.js"></script>
   <script src="./js/validateFormInput.js"></script>
 </html>

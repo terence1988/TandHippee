@@ -15,10 +15,6 @@
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css"
 		/>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css"
-		/>
 		<link rel="stylesheet" href="css/index.css" />
 	</head>
 	<body>
@@ -39,16 +35,28 @@
 						<li class="nav-item active">
 							<a class="nav-link" href="./calendar.html">Calendar View</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="./taskForm.html">Task Form</a>
-						</li>
 					</ul>
 				</nav>
 			</div>
 		</header>
 		<!--body part-->
+		<section>
+			<a
+				type="button"
+				class="btn btn-primary mb-3"
+				data-toggle="modal"
+				href="./taskForm.html"
+				data-target="#modal"
+			>
+				Add New Task
+			</a>
+			<button type="button" class="btn btn-primary mb-3" id="clsBtn">
+				Clear The Tasks
+			</button>
+		</section>
 		<section id="calendar" class="container"></section>
 	</body>
+	<script src="./js/taskManager.js"></script>
 	<script src="./js/fullcalendar.js"></script>
 	<script
 		src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -60,6 +68,5 @@
 		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 		crossorigin="anonymous"
 	></script>
-	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
 </html>
