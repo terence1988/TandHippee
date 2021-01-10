@@ -1,8 +1,9 @@
-const eventsManager = new TaskManager(); //Created a obj for EventManager class
+const taskPlanner = new TaskManager(); //Created a obj for EventManager class
 // Select the New Task Form
 const taskForm = document.querySelector('#taskForm');
+//Force due date later than today
 let today = new Date().toISOString().split('T')[0];
-document.getElementById('endDate').setAttribute('min', today);
+document.getElementById('dueDate').setAttribute('min', today);
 
 // Add an 'onsubmit' event listener
 taskForm.addEventListener('submit', (event) => {
@@ -10,25 +11,24 @@ taskForm.addEventListener('submit', (event) => {
 	event.preventDefault();
 
 	//errorMessages
-	const errorMessagetitle = document.querySelector('#alertMessagetitle');
-	const errorMessageDescription = document.querySelector('#alertMessageDesc');
-	const errorMessageAssignedTo = document.querySelector('#alertMessageAssign');
-	const errorMessageDueDate = document.querySelector('#alertMessageDueDate');
+	const errorMessageTitle = document.querySelector('#alertMsgTitle');
+	const errorMessageDescription = document.querySelector('#alertMsgDesc');
+	const errorMessageAssignedTo = document.querySelector('#alertMsgAssign');
 
 	//Get value
 	let title = document.querySelector('#inputTask').value;
-	let description = document.querySelector('#inputDescription').value;
 	let assignedTo = document.querySelector('#inputAssignee').value;
+	let description = document.querySelector('#inputDescription').value;
 	let startDate = document.querySelector('#startDate').value;
-	let dueDate = document.querySelector('#endDate').value;
+	let dueDate = document.querySelector('#dueDate').value;
 	let taskStatus = document.querySelector('#taskStatus').value;
 
 	//Validate form
 	if (!validFormFieldInput(title)) {
-		errorMessagetitle.innerHTML = '\xa0\xa0What would you like to do?';
-		errorMessagetitle.style.display = 'inline';
+		errorMessageTitle.innerHTML = '\xa0\xa0What would you like to do?';
+		errorMessageTitle.style.display = 'inline';
 	} else {
-		errorMessagetitle.style.display = 'none';
+		errorMessageTitle.style.display = 'none';
 	}
 	if (!validFormFieldInput(description)) {
 		errorMessageDescription.innerHTML = '\xa0\xa0Please type in some details';
@@ -42,20 +42,11 @@ taskForm.addEventListener('submit', (event) => {
 	} else {
 		errorMessageAssignedTo.style.display = 'none';
 	}
-	if (Date.parse(dueDate) < new Date().getTime() - 6400000) {
-		errorMessageDueDate.innerHTML =
-			'\xa0\xa0How can you get it done in the past?';
-		errorMessageDueDate.style.display = 'inline';
-	} else if (!dueDate) {
-		errorMessageDueDate.innerHTML = '\xa0\xa0Please select a date';
-		errorMessageDueDate.style.display = 'inline';
-	} else {
-		errorMessageDueDate.style.display = 'none';
-	}
 	//Validate form
+	console.log(dueDate);
 	// storeData on submit
 	if (title && assignedTo && description && dueDate && taskStatus) {
-		eventsManager.addEvent(
+		taskPlanner.createTask(
 			title,
 			assignedTo,
 			taskStatus,
@@ -64,7 +55,8 @@ taskForm.addEventListener('submit', (event) => {
 			description
 		);
 		//location.replace('https://terence1988.github.io/TandHippee/calendar.html'); web
-		window.location.href = './index.html';
+		//promise style should be better
+		setTimeout((window.location.href = './index.html'), 4000);
 		event.target.reset();
 	}
 });

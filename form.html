@@ -46,7 +46,7 @@
 			<form class="form-area container" id="taskForm">
         <!-- taskName -->
         <div class="form-group">
-          <label for="inputTask" class="col-form-label text-danger">Task Name:<span id="alertMessagetitle" class="text-danger"></span></label>
+          <label for="inputTask" class="col-form-label text-danger">Task Name:<span id="alertMsgTitle" class="text-danger"></span></label>
         <input
           type="text"
           class="form-control"
@@ -58,7 +58,7 @@
 				<!-- formLine1 -->
 				<div class="row">
 					<div class="form-group col-6">
-						<label for="inputAssignee" class="col-form-label text-danger">Assigned Name:<span	id="alertMessageAssign"	class="text-danger"></span></label>
+						<label for="inputAssignee" class="col-form-label text-danger">Assigned Name:<span	id="alertMsgAssign"	class="text-danger"></span></label>
 						<input
 							type="text"
 							class="form-control"
@@ -91,14 +91,14 @@
             Start Date:<span id="alertMessagestartDate"	class="text-danger"
 							></span
 						></label>
-            <input type="date" class="form-control" id="startDate"/>
+            <input type="date" class="form-control" id="startDate" onkeydown="return false"/>
           </div>
           <div class="col-6">
             <label for="inputDate" class="col-form-label text-danger">
-              Due Date:<span id="alertMessageDueDate"	class="text-danger"
+              Due Date:<span id="alertMsgDueDate"	class="text-danger"
                 ></span
               ></label>
-              <input type="date" class="form-control" id="endDate"/>
+              <input type="date" class="form-control" id="dueDate" onkeydown="return false"/>
             </div>
         </div>
 				<!-- taskDescription -->
@@ -107,7 +107,7 @@
 						id="task-details__label"
 						class="text-center"
 						for="inputDescription"
-						>Task Details:<span id="alertMessageDesc" class="text-danger"></span
+						>Task Details:<span id="alertMsgDesc" class="text-danger"></span
 					></label>
 					<textarea
 						class="form-control"
@@ -154,5 +154,5 @@
 		crossorigin="anonymous"
   ></script>
   <script src="./js/taskManager.js"></script>
-  <script src="./js/validateFormInput.js"></script>
+  <script src="./js/formEvents.js"></script>
 </html>

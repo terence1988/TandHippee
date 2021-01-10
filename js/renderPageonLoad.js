@@ -1,7 +1,7 @@
-let eventManager = new TaskManager();
+let taskPlanner = new TaskManager();
 document.addEventListener('DOMContentLoaded', function () {
-	eventManager.pendEvents();
-	eventManager.renderEvents();
+	taskPlanner.readTasks();
+	taskPlanner.renderTasks();
 });
 
 // setInterval(() => {

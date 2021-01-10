@@ -1,11 +1,11 @@
 class TaskManager {
 	//Create this Class to CRUD the whole webpage
-	constructor() {
+	constructor(currentId = 0) {
 		// Set the currentId value to localStorage count
-		this.currentId = 0; // sometimes it has previous count
+		this.currentId = currentId;
 		// Initialize an empty array to save the events added
 		this.events = [];
-		// Set the currentId value to currentId
+		this.cards = [];
 		//this.currentId = currentId;
 	}
 	/*Add new events */
@@ -15,75 +15,153 @@ class TaskManager {
 		assignedTo,
 		taskStatus,
 		startDate = '',
-		endDate,
+		dueDate,
 		description
 	) {
 		//parse Dates
-		let nowDate = new Date();
-		let nowMonth = (nowDate.getMonth() + 1).toString().padStart(2, 0);
-		let nowDay = nowDate.getMonth().toString().padStart(2, 0);
-		const currentDate = `${nowDate.getFullYear()}-${nowMonth}-${nowDay}`;
-		startDate ? '' : (startDate = currentDate);
-		//reset all card Ids in local storage
-		let lastCardId = getCardID();
+		// let nowDate = new Date();
+		// let nowMonth = (nowDate.getMonth() + 1).toString().padStart(2, 0);
+		// let nowDay = nowDate.getDate().toString().padStart(2, 0);
+		// const currentDate = `${nowDate.getFullYear()}-${nowMonth}-${nowDay}`;
+		// startDate ? '' : (startDate = currentDate);
+		let today = new Date().toLocaleDateString(undefined, {
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+		});
+		//Pendding a small popup
 
-		if (this.currentId > lastCardId) {
-			this.currentId = lastCardId;
+		if (Date.parse(startDate) < Date.now()) {
+			alert('Task Start Date is set to TODAY');
+			startDate = today.split('/').reverse().join('-');
+		} else {
+			startDate = startDate;
 		}
+		//Get a new id based on the info from localstorage
+		this.currentId = this.updateCurrentId();
 		//Construct the task
 		const newTask = {
 			title: title,
-			start: startDate,
-			end: endDate,
 			assignedTo: assignedTo,
-			dueDate: endDate,
+			start: startDate,
+			end: dueDate,
+			dueDate: dueDate,
 			taskDetails: description,
 			taskStatus: taskStatus,
 			currentId: this.currentId,
 		};
 		// push the new book into the array
-		window.localStorage.setItem(`${this.currentId}`, JSON.stringify(newTask));
-		this.events.push(
-			JSON.parse(window.localStorage.getItem(`${this.currentId}`))
-		); //leave a copy in local storage
+		localStorage.setItem(`${this.currentId}`, JSON.stringify(newTask));
 	}
-	readTasks(id) {
-		return JSON.parse(window.localStorage.getItem(id));
-	}
-	updateTasks(id) {
-		let item = readTasks(id);
+	readTask(id) {
+		return JSON.parse(localStorage.getItem(id));
 	}
 
-	deleteTasks(id) {}
-	/*Display list of events*/
-	renderTasks() {
-		const eventsHtmlList = [];
-		for (let i = 0; i < Object.keys(window.localStorage).length; i++) {
-			const events = this.events[i];
-			const eventHtml = createTaskCard(
-				events.currentId,
-				events.title,
-				events.taskStatus,
-				events.taskDetails,
-				events.assignedTo,
-				events.dueDate
-			);
-			eventsHtmlList.push(eventHtml);
+	readTasks() {
+		let keys = Object.keys(localStorage);
+		let i = keys.length;
+		this.events = []; //As the localStorage grows, I need re-initialize this array
+		while (i--) {
+			if (keys[i] >= 900) {
+				continue;
+			}
+			this.events.push(JSON.parse(localStorage.getItem(keys[i])));
 		}
-		//console.log(eventsHtmlList);
-		const eventsHtml = eventsHtmlList.join('\n');
-		const eventsList = document.querySelector('#card-list');
-		eventsList.innerHTML = eventsHtml;
 	}
+
+	updateTask(id, card) {
+		localStorage.setItem(id, JSON.stringify(card));
+	}
+
+	deleteTask(id) {
+		//move item larger than 900
+		let swapContent = this.readTask(id);
+		let counter = Object.keys(localStorage).length;
+		let deleteKey = Object.keys(localStorage)
+			.map((i) => Number(i))
+			.sort(function (a, b) {
+				return a - b;
+			})
+			.pop();
+		deleteKey < 900 ? (deleteKey = 900) : (deleteKey = deleteKey + 1);
+		swapContent.currentId = deleteKey;
+		localStorage.setItem(deleteKey, JSON.stringify(swapContent));
+		localStorage.removeItem(id);
+		//Object.keys seems be queried every time it is invoked
+
+		//reinitialize existing cards
+		let index = [];
+		for (let i of Object.keys(localStorage)) {
+			if (i >= 900) {
+				continue;
+			}
+			index.push(i);
+		}
+		for (let j = 0; j < index.length; j++) {
+			let swapCards = localStorage.getItem(index[j]);
+			let newCards = JSON.parse(swapCards);
+			newCards.currentId = j;
+			localStorage.setItem(j, JSON.stringify(newCards));
+		}
+	}
+
+	clearTasks() {
+		localStorage.clear();
+	}
+	//return the minimal available int
+	updateCurrentId() {
+		let maxCards = Object.keys(localStorage)
+			.map((i) => Number(i))
+			.sort(function (a, b) {
+				return a - b;
+			});
+		let size = maxCards.length;
+		let id = '';
+		if (size === 0) {
+			return (id = 1);
+		}
+		// Check is all numbers 0 to n - 1  are present in array
+		if (maxCards[size - 1] === maxCards.length - 1) {
+			return (id = maxCards.length);
+		}
+		for (let index = 0; index < size; index++) {
+			if (index < parseInt(maxCards[index])) {
+				return (id = index);
+			}
+		}
+	}
+
+	// Generate html from this.events array
+	renderTasks() {
+		this.readTasks();
+		this.cards = [];
+		for (const task of this.events) {
+			const cardHTML = cardTemplate(
+				task.currentId,
+				task.title,
+				task.assignedTo,
+				task.taskStatus,
+				task.dueDate,
+				task.taskDetails
+			);
+			this.cards.push(cardHTML);
+		}
+		//console.log(tasksHtmlList);
+		const cardsHtml = this.cards.join('\n');
+		const tasksList = document.querySelector('#card-list');
+		tasksList.innerHTML = cardsHtml;
+	}
+	//Find the smallest missing int  //key was string Number.parseInt
+	//Just return the number comparing to the localStorage
 }
 
 const cardTemplate = (
 	index,
 	title,
-	taskStatus,
-	taskDetails,
 	assignedTo,
-	dueDate
+	taskStatus,
+	dueDate,
+	taskDetails
 ) => {
 	return `
   <li class="list-group-items card mb-3 mr-3" id="card-${index}">
@@ -95,49 +173,30 @@ const cardTemplate = (
     <p class="card-text">${taskDetails}</p>
     <p class="card-text">${assignedTo}</p>
     <p class="card-text">${dueDate}</p>
-    <button href="#" class="btn btn-primary">Done</button>
-    <button href="#" class="btn btn-primary">Delete</button>
+    <button href="#" class="btn btn-primary finBtn">Done</button>
+    <button href="#" class="btn btn-primary startBtn">Start</button>
+    <button href="#" class="btn btn-primary delBtn">Delete</button>
   </div>
   </li>
 `;
 };
 
-//Find the smallest missing int  //key was string Number.parseInt
-//Just return the number comparing to the localStorage
-const getCardId = () => {
-	let maxCards = Object.keys(window.localStorage)
-		.map((i) => Number(i))
-		.sort(function (a, b) {
-			return a - b;
-		});
-	let id = '';
-	if (maxCards.length === 1) {
-		return (id = 2);
-	}
-	if (maxCards.length === 0) {
-		return (id = 1);
-	}
-	for (let j = 0; j < maxCards.length; j++) {
-		if (maxCards[j] !== j + 1) {
-			return (id = j + 1);
-		} else id = maxCards.length + 1;
-	}
-	return id;
-};
+// int findFirstMissing(int[] arr , int start ,int end, int first)
+// {
+// if (start < end)
+// {
+// int mid = (start+end)/2;
 
-// Get an Id from localStorage
-
-///
-// cloneCardBySmallMissedId() {
-// 	let maxCards = Object.keys(window.localStorage)
-// 		.map((i) => Number(i))
-// 		.sort(function (a, b) {
-// 			return a - b;
-// 		});
-// 	let lastCardId = getCardID();
-// 	let maxCardId = maxCards.pop();
-// 	const card = JSON.parse(window.localStorage.getItem(maxCardId));
-// 	card.currentId = lastCardId;
-// 	window.localStorage.setItem(`${lastCardId}`, JSON.stringify(card));
+// /** Index matches with value
+// at that index, means missing
+// element cannot be upto that point */
+// if (arr[mid] != mid+first)
+// return findFirstMissing(arr, start,
+//          mid , first);
+// else
+// return findFirstMissing(arr, mid+1,
+//          end , first);
 // }
-///
+// return start+first;
+
+// }
