@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		initialView: 'dayGridMonth',
 		timeZone: 'local',
 		initialDate: initDate,
+		aspectRatio: 1.78,
 		headerToolbar: {
 			left: 'prev,next today',
 			center: 'title',
@@ -41,6 +42,7 @@ clsBtn.addEventListener('click', () => {
 		initialView: 'dayGridMonth',
 		timeZone: 'local',
 		initialDate: initDate,
+		aspectRatio: 1.78,
 		headerToolbar: {
 			left: 'prev,next today',
 			center: 'title',

@@ -4,7 +4,23 @@ const taskForm = document.querySelector('#taskForm');
 //Force due date later than today
 let today = new Date().toISOString().split('T')[0];
 document.getElementById('dueDate').setAttribute('min', today);
-
+const id = window.location.search.split('').pop();
+let Form = {};
+if (id) {
+	form = taskPlanner.readTask(id);
+	let title = document.querySelector('#inputTask');
+	let assignedTo = document.querySelector('#inputAssignee');
+	let description = document.querySelector('#inputDescription');
+	let startDate = document.querySelector('#startDate');
+	let dueDate = document.querySelector('#dueDate');
+	let taskStatus = document.querySelector('#taskStatus');
+	title.value = form.title;
+	assignedTo.value = form.assignedTo;
+	description.value = form.taskDetails;
+	startDate.value = form.start;
+	dueDate.value = form.dueDate;
+	taskStatus.value = form.taskStatus;
+}
 // Add an 'onsubmit' event listener
 taskForm.addEventListener('submit', (event) => {
 	// Prevent default action
@@ -43,9 +59,21 @@ taskForm.addEventListener('submit', (event) => {
 		errorMessageAssignedTo.style.display = 'none';
 	}
 	//Validate form
-	console.log(dueDate);
-	// storeData on submit
-	if (title && assignedTo && description && dueDate && taskStatus) {
+	if (id) {
+		form = {
+			title: title,
+			assignedTo: assignedTo,
+			start: startDate,
+			end: dueDate,
+			dueDate: dueDate,
+			taskDetails: description,
+			taskStatus: taskStatus,
+			currentId: id,
+		};
+		taskPlanner.updateTask(id, form);
+		setTimeout((window.location.href = './index.html'), 4000);
+		event.target.reset();
+	} else if (title && assignedTo && description && dueDate && taskStatus) {
 		taskPlanner.createTask(
 			title,
 			assignedTo,
@@ -58,6 +86,7 @@ taskForm.addEventListener('submit', (event) => {
 		//promise style should be better
 		setTimeout((window.location.href = './index.html'), 4000);
 		event.target.reset();
+		// storeData on submit
 	}
 });
 

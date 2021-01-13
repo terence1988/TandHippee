@@ -1,9 +1,0 @@
-@import 'header.css';
-.bg-light {
-	background-color: #c8e6dc !important;
-}
-
-#card-list {
-	display: flex;
-	flex-wrap: wrap;
-}

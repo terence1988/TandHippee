@@ -1,0 +1,46 @@
+@import 'header.css';
+
+.card {
+	box-sizing: border-box;
+	border-radius: 15px;
+	width: 18em;
+	height: 18em;
+}
+
+.list-group {
+	list-style-type: none;
+}
+
+.bg-light {
+	background-color: #c8e6dc !important;
+}
+
+#card-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.delete-icon::after,
+.edit-icon::after {
+	font-family: 'Font Awesome 5 Free';
+	font-size: 1.5em;
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	display: block;
+}
+.delete-icon::after {
+	content: '\f2ed';
+	top: 10px;
+	right: 10px;
+	color: orange;
+}
+.edit-icon::after {
+	content: '\f044';
+	top: 10px;
+	right: 40px;
+	color: gray;
+}
+.jumbotron {
+	min-height: 80vh;
+}

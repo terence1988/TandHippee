@@ -30,7 +30,6 @@ class TaskManager {
 			day: '2-digit',
 		});
 		//Pendding a small popup
-
 		if (Date.parse(startDate) < Date.now()) {
 			alert('Task Start Date is set to TODAY');
 			startDate = today.split('/').reverse().join('-');
@@ -71,12 +70,12 @@ class TaskManager {
 
 	updateTask(id, card) {
 		localStorage.setItem(id, JSON.stringify(card));
+		this.readTasks();
 	}
 
 	deleteTask(id) {
 		//move item larger than 900
 		let swapContent = this.readTask(id);
-		let counter = Object.keys(localStorage).length;
 		let deleteKey = Object.keys(localStorage)
 			.map((i) => Number(i))
 			.sort(function (a, b) {
@@ -89,10 +88,10 @@ class TaskManager {
 		localStorage.removeItem(id);
 		//Object.keys seems be queried every time it is invoked
 
-		//reinitialize existing cards
+		//reinitialize existing task array
 		let index = [];
 		for (let i of Object.keys(localStorage)) {
-			if (i >= 900) {
+			if (parseInt(i) > 900) {
 				continue;
 			}
 			index.push(i);
@@ -130,7 +129,11 @@ class TaskManager {
 			}
 		}
 	}
-
+	editTask(id) {
+		//help to fill the form -- query string
+		const queryString = '?taskId=' + id;
+		window.location.href = './form.html' + queryString;
+	}
 	// Generate html from this.events array
 	renderTasks() {
 		this.readTasks();
@@ -164,18 +167,25 @@ const cardTemplate = (
 	taskDetails
 ) => {
 	return `
-  <li class="list-group-items card mb-3 mr-3" id="card-${index}">
+  <li class="list-group-items card mb-3 mr-3" id="card-${index}" >
   <div class="card-body">
     <h5 class="card-title">${title}</h5>
     <span class="badge ${
-			taskStatus === 'DONE' ? 'badge-secondary' : 'badge-primary'
+			taskStatus === 'Will Do'
+				? 'badge-danger'
+				: taskStatus === 'In Progress'
+				? 'badge-warning'
+				: taskStatus === 'Completed'
+				? 'badge-success'
+				: 'badge-primary'
 		}">${taskStatus}</span>
     <p class="card-text">${taskDetails}</p>
     <p class="card-text">${assignedTo}</p>
     <p class="card-text">${dueDate}</p>
-    <button href="#" class="btn btn-primary finBtn">Done</button>
-    <button href="#" class="btn btn-primary startBtn">Start</button>
-    <button href="#" class="btn btn-primary delBtn">Delete</button>
+    <button class="btn btn-primary finBtn">Done</button>
+    <button class="btn btn-primary startBtn">Start</button>
+    <button type="button" class="btn delete-icon delBtn"></button>
+    <button type="button" class="btn edit-icon editBtn"></button>
   </div>
   </li>
 `;
@@ -200,3 +210,5 @@ const cardTemplate = (
 // return start+first;
 
 // }
+
+//draggable="true"  only mark the element as dragable

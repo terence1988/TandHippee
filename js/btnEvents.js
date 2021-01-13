@@ -2,53 +2,45 @@ const targetCard = document.getElementById('card-list');
 // Add an 'onclick' event listener to the using event bubbling to response to card events
 
 targetCard.addEventListener('click', (event) => {
-	// Check if a "Mark As Read" button was clicked
-	if (event.target.classList.contains('finBtn')) {
-		// Get the parent Book
-		const parentCard = event.target.parentElement.parentElement;
-		// Get the cardId of the parent Book.
-		const cardId = parentCard.id[5];
-		// Get the book from the BookManager using the bookId
-		const card = taskPlanner.readTask(cardId);
-		// Update the book status to 'READ'
-		card.taskStatus = 'DONE';
-		taskPlanner.updateTask(cardId, card);
-		// Render the books
-		taskPlanner.readTasks();
-		taskPlanner.renderTasks();
+	// Get the parent Book
+	if (event.target.id === 'card-list') {
+		return;
 	}
-});
-targetCard.addEventListener('click', (event) => {
+	const parentCard = event.target.parentElement.parentElement;
+	// Get the cardId of the parent Book.
+	const cardId = parentCard.id[5];
+	// Get the book from the BookManager using the bookId
+	const card = taskPlanner.readTask(cardId);
 	// Check if a "Mark As Read" button was clicked
-	if (event.target.classList.contains('startBtn')) {
-		// Get the parent Book
-		const parentCard = event.target.parentElement.parentElement;
-		// Get the cardId of the parent Book.
-		const cardId = parentCard.id[5];
-		// Get the book from the BookManager using the bookId
-		const card = taskPlanner.readTask(cardId);
+	//console.log(event.target.nodeName); nodeName is all in capitalized
+	if (
+		event.target.nodeName === 'BUTTON' &&
+		event.target.classList.contains('finBtn')
+	) {
 		// Update the book status to 'READ'
+		card.taskStatus = 'Completed';
+		taskPlanner.updateTask(cardId, card);
+	} else if (
+		event.target.nodeName === 'BUTTON' &&
+		event.target.classList.contains('startBtn')
+	) {
 		card.taskStatus = 'In Progress';
 		taskPlanner.updateTask(cardId, card);
-		// Render the books
-		taskPlanner.readTasks();
-		taskPlanner.renderTasks();
-	}
-});
-
-targetCard.addEventListener('click', (event) => {
-	// Check if a "Mark As Read" button was clicked
-	if (event.target.classList.contains('delBtn')) {
+	} else if (
+		event.target.nodeName === 'BUTTON' &&
+		event.target.classList.contains('delBtn')
+	) {
 		// Get the parent Book
-		const parentCard = event.target.parentElement.parentElement;
-		// Get the cardId of the parent Book.
-		const cardId = parentCard.id[5];
-		// Get the bookId from the BookManager using the bookId
 		taskPlanner.deleteTask(cardId);
-		// Render the books
-		taskPlanner.readTasks();
-		taskPlanner.renderTasks();
+	} else if (
+		event.target.nodeName === 'BUTTON' &&
+		event.target.classList.contains('editBtn')
+	) {
+		// Get the parent Book
+		taskPlanner.editTask(cardId);
 	}
+	// Render the books
+	taskPlanner.renderTasks();
 });
 
 //Globally available btn to clear local storage
@@ -57,3 +49,10 @@ clsBtn.addEventListener('click', () => {
 	localStorage.clear();
 	calendar.render();
 });
+
+// let forDeletion = [2, 3, 5]
+// let arr = [1, 2, 3, 4, 5, 3]
+// arr = arr.filter(item => !forDeletion.includes(item))
+// // !!! Read below about array.includes(...) support !!!
+// console.log(arr)
+// // [ 1, 4 ]
