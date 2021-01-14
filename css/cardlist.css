@@ -20,6 +20,15 @@
 	flex-wrap: wrap;
 }
 
+.delBtn,
+.editBtn {
+	pointer-events: none;
+	cursor: default;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
 .delete-icon::after,
 .edit-icon::after {
 	font-family: 'Font Awesome 5 Free';
@@ -28,6 +37,7 @@
 	height: 1em;
 	position: absolute;
 	display: block;
+	pointer-events: all;
 }
 .delete-icon::after {
 	content: '\f2ed';

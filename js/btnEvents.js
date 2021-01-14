@@ -50,6 +50,7 @@ targetCard.addEventListener('click', (event) => {
 	// Render the books
 	taskPlanner.renderTasks();
 });
+
 //<span class="input" role="textbox" contenteditable>99</span>
 //Globally available btn to clear local storage
 const clsBtn = document.getElementById('clsBtn');
