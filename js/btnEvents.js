@@ -55,7 +55,7 @@ targetCard.addEventListener('click', (event) => {
 const clsBtn = document.getElementById('clsBtn');
 clsBtn.addEventListener('click', () => {
 	localStorage.clear();
-	calendar.render();
+	taskPlanner.render();
 });
 
 // let forDeletion = [2, 3, 5]

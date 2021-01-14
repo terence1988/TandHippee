@@ -124,7 +124,7 @@ class TaskManager {
 		//reinitialize existing task array
 		let index = [];
 		for (let i of Object.keys(localStorage)) {
-			if (parseInt(i) > 900) {
+			if (parseInt(i) >= 900) {
 				continue;
 			}
 			index.push(i);
