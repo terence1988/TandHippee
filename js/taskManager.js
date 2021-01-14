@@ -1,3 +1,36 @@
+const cardTemplate = (
+	index,
+	title,
+	assignedTo,
+	taskStatus,
+	dueDate,
+	taskDetails
+) => {
+	return `
+  <li class="list-group-items card mb-3 mr-3" id="card-${index}" >
+  <div class="card-body">
+    <h5 class="card-title">${title}</h5>
+    <span class="badge ${
+			taskStatus === 'Will Do'
+				? 'badge-danger'
+				: taskStatus === 'In Progress'
+				? 'badge-warning'
+				: taskStatus === 'Completed'
+				? 'badge-success'
+				: 'badge-primary'
+		}">${taskStatus}</span>
+    <p class="card-text">${taskDetails}</p>
+    <p class="card-text">${assignedTo}</p>
+    <p class="card-text">${dueDate}</p>
+    <button class="btn btn-primary finBtn">Done</button>
+    <button class="btn btn-primary startBtn">Start</button>
+    <button type="button" class="btn delete-icon delBtn"></button>
+    <button type="button" class="btn edit-icon editBtn"></button>
+  </div>
+  </li>
+`;
+};
+
 class TaskManager {
 	//Create this Class to CRUD the whole webpage
 	constructor(currentId = 0) {
@@ -157,39 +190,6 @@ class TaskManager {
 	//Find the smallest missing int  //key was string Number.parseInt
 	//Just return the number comparing to the localStorage
 }
-
-const cardTemplate = (
-	index,
-	title,
-	assignedTo,
-	taskStatus,
-	dueDate,
-	taskDetails
-) => {
-	return `
-  <li class="list-group-items card mb-3 mr-3" id="card-${index}" >
-  <div class="card-body">
-    <h5 class="card-title">${title}</h5>
-    <span class="badge ${
-			taskStatus === 'Will Do'
-				? 'badge-danger'
-				: taskStatus === 'In Progress'
-				? 'badge-warning'
-				: taskStatus === 'Completed'
-				? 'badge-success'
-				: 'badge-primary'
-		}">${taskStatus}</span>
-    <p class="card-text">${taskDetails}</p>
-    <p class="card-text">${assignedTo}</p>
-    <p class="card-text">${dueDate}</p>
-    <button class="btn btn-primary finBtn">Done</button>
-    <button class="btn btn-primary startBtn">Start</button>
-    <button type="button" class="btn delete-icon delBtn"></button>
-    <button type="button" class="btn edit-icon editBtn"></button>
-  </div>
-  </li>
-`;
-};
 
 // int findFirstMissing(int[] arr , int start ,int end, int first)
 // {

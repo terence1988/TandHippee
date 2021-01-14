@@ -1,0 +1,26 @@
+{
+  "name": "tandhipee",
+  "version": "1.0.0",
+  "description": "GenerationAustralia",
+  "main": "./js/taskManager.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^8.2.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terence1988/TandHipee.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/terence1988/TandHipee/issues"
+  },
+  "homepage": "https://github.com/terence1988/TandHipee#readme"
+}

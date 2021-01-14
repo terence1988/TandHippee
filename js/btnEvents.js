@@ -39,10 +39,18 @@ targetCard.addEventListener('click', (event) => {
 		// Get the parent Book
 		taskPlanner.editTask(cardId);
 	}
+
+	// if (event.target.nodeName === 'P') {
+	// 	event.target.classList = 'input';
+	// 	event.target.setAttribute('role', 'textbox');
+	// 	event.target.setAttribute('contenteditable', 'true');
+	// 	console.log(event.target.getAttribute('contenteditable'));
+	// 	return;
+	// }
 	// Render the books
 	taskPlanner.renderTasks();
 });
-
+//<span class="input" role="textbox" contenteditable>99</span>
 //Globally available btn to clear local storage
 const clsBtn = document.getElementById('clsBtn');
 clsBtn.addEventListener('click', () => {
@@ -56,3 +64,5 @@ clsBtn.addEventListener('click', () => {
 // // !!! Read below about array.includes(...) support !!!
 // console.log(arr)
 // // [ 1, 4 ]
+
+//It is also possible to encrypt your form data on submit
