@@ -212,3 +212,4 @@ class TaskManager {
 // }
 
 //draggable="true"  only mark the element as dragable
+module.exports = TaskManager; // This is needed to run testing scripts when require() is invoked

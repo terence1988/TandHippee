@@ -15,8 +15,9 @@ describe('TaskManager', () => {
 		];
 
 		taskManager.createTask(inputArray);
-		taskManager.readTasks();
-		const result = taskManager.events.length;
-		assert.strictEqual(1, expected);
+		const result = Object.keys(localStorage).length;
+		assert.strictEqual(result, expected);
 	});
 });
+
+// mocha + mock-local-storage

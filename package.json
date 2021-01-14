@@ -8,10 +8,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "mocha": "^8.2.1"
+    "mocha": "^8.2.1",
+    "mock-local-storage": "^1.1.15"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --require mock-local-storage"
   },
   "repository": {
     "type": "git",
