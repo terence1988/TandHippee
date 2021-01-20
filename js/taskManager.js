@@ -51,12 +51,6 @@ class TaskManager {
 		dueDate,
 		description
 	) {
-		//parse Dates
-		// let nowDate = new Date();
-		// let nowMonth = (nowDate.getMonth() + 1).toString().padStart(2, 0);
-		// let nowDay = nowDate.getDate().toString().padStart(2, 0);
-		// const currentDate = `${nowDate.getFullYear()}-${nowMonth}-${nowDay}`;
-		// startDate ? '' : (startDate = currentDate);
 		let today = new Date().toLocaleDateString(undefined, {
 			year: 'numeric',
 			month: '2-digit',
@@ -191,25 +185,12 @@ class TaskManager {
 	//Just return the number comparing to the localStorage
 }
 
-// int findFirstMissing(int[] arr , int start ,int end, int first)
-// {
-// if (start < end)
-// {
-// int mid = (start+end)/2;
-
-// /** Index matches with value
-// at that index, means missing
-// element cannot be upto that point */
-// if (arr[mid] != mid+first)
-// return findFirstMissing(arr, start,
-//          mid , first);
-// else
-// return findFirstMissing(arr, mid+1,
-//          end , first);
-// }
-// return start+first;
-
-// }
-
 //draggable="true"  only mark the element as dragable
-module.exports = TaskManager; // This is needed to run testing scripts when require() is invoked
+// This is needed to run testing scripts when require() is invoked
+
+//parse Dates
+// let nowDate = new Date();
+// let nowMonth = (nowDate.getMonth() + 1).toString().padStart(2, 0);
+// let nowDay = nowDate.getDate().toString().padStart(2, 0);
+// const currentDate = `${nowDate.getFullYear()}-${nowMonth}-${nowDay}`;
+// startDate ? '' : (startDate = currentDate);

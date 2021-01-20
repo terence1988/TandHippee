@@ -2,7 +2,8 @@ const taskPlanner = new TaskManager(); //Created a obj for EventManager class
 // Select the New Task Form
 const taskForm = document.querySelector('#taskForm');
 //Force due date later than today
-let today = new Date().toISOString().split('T')[0];
+let tzoffset = new Date().getTimezoneOffset() * 60000; //offset in milliseconds
+let today = new Date(Date.now() - tzoffset).toISOString().split('T')[0]; //parseit for localeTime
 document.getElementById('dueDate').setAttribute('min', today);
 const id = window.location.search.split('').pop();
 let Form = {};

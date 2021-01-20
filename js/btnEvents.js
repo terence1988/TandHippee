@@ -56,6 +56,7 @@ targetCard.addEventListener('click', (event) => {
 const clsBtn = document.getElementById('clsBtn');
 clsBtn.addEventListener('click', () => {
 	localStorage.clear();
+	taskPlanner.readTasks();
 	taskPlanner.render();
 });
 
