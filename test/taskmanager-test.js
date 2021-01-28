@@ -56,14 +56,14 @@ describe('TaskManager', () => {
 		assert.notDeepStrictEqual(origionalCard, result);
 		localStorage.clear();
 	});
-	it('checks the item exists in the UI', function () {
-		const taskManager = new TaskManager(0);
-		const expected = 1; //They acrually as One to occupy the title prop
-		const inputArray = 'Title';
-		taskManager.createTask(inputArray);
-		taskManager.renderTasks();
-		const result = taskManager.cards.length;
-		assert.strictEqual(expected, result);
-		localStorage.clear();
-	});
+	// it('checks the item exists in the UI', function () {
+	// 	const taskManager = new TaskManager(0);
+	// 	const expected = 1; //They acrually as One to occupy the title prop
+	// 	const inputArray = 'Title';
+	// 	taskManager.createTask(inputArray);
+	// 	taskManager.renderTasks();
+	// 	const result = taskManager.cards.length;
+	// 	assert.strictEqual(expected, result);
+	// 	localStorage.clear();
+	// });
 });

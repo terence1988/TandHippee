@@ -9,7 +9,7 @@ const cardTemplate = (
 	return `
   <li class="list-group-items card mb-3 mr-3" id="card-${index}" >
   <div class="card-body">
-    <h5 class="card-title">${title}</h5>
+    <h5 class="card-title" contenteditable="true">${title}</h5>
     <span class="badge ${
 			taskStatus === 'Will Do'
 				? 'badge-danger'
@@ -194,3 +194,10 @@ class TaskManager {
 // let nowDay = nowDate.getDate().toString().padStart(2, 0);
 // const currentDate = `${nowDate.getFullYear()}-${nowMonth}-${nowDay}`;
 // startDate ? '' : (startDate = currentDate);
+
+// var d1 = new Date();
+// var d2 = new Date(milliseconds);
+// var d3 = new Date(dateString);
+// var d4 = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+
+module.exports = TaskManager;
